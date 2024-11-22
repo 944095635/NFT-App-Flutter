@@ -37,7 +37,9 @@ dependencies:
   # cupertino_icons: ^1.0.8
   get: ^4.6.6
   marqueer: ^1.4.5                #跑马灯
+  flutter_svg: ^2.0.15            #Svg图片
   animated_toggle_switch: ^0.8.3  #滑块开关
+  flutter_staggered_grid_view: ^0.7.0 #瀑布流
   flutter_styled:                 #布局组件
     git: 
        url: https://github.com/DMSkin/flutter_styled.git

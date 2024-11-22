@@ -147,15 +147,20 @@ class StartPage extends GetView<StartLogic> {
       padding: const EdgeInsets.symmetric(horizontal: 25),
       child: Obx(
         () => AnimatedToggleSwitch<bool>.dual(
-          current: !controller.open.value,
-          onChanged: (e) {
-            controller.open.value = !e;
+          current: controller.open.value,
+          onChanged: (e) async {
+            if (!controller.open.value) {
+              controller.open.value = e;
+              Future.delayed(const Duration(seconds: 2))
+                  .then((e) => controller.toHome());
+            }
           },
+          //active: !controller.open.value,
           indicatorSize: const Size(80, 75),
           height: 85,
           indicatorTransition: const ForegroundIndicatorTransition.fading(),
           iconBuilder: (value) {
-            if (!value) {
+            if (value) {
               return const CircularProgressIndicator();
             }
             return Image.asset(
@@ -175,8 +180,8 @@ class StartPage extends GetView<StartLogic> {
             );
           },
           borderWidth: 5,
-          first: true,
-          second: false,
+          first: false,
+          second: true,
           styleBuilder: (value) => ToggleStyle(
             indicatorColor: Colors.white,
             borderColor: !controller.open.value
