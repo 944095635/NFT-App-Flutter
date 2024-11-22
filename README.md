@@ -2,15 +2,13 @@
 
 A new Flutter project.
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
+![image](https://github.com/user-attachments/assets/9b34b708-21a2-4161-a0db-a1bdcdbefe2a)
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+参考设计图地址：
+https://dribbble.com/shots/19110357-NFT-Marketplace-Mobile-App
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+设计师：
+https://qclay.design/
+https://dribbble.com/qclay
