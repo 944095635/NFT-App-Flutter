@@ -1,5 +1,6 @@
 import 'package:animated_toggle_switch/animated_toggle_switch.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_styled/size_extension.dart';
 import 'dart:math' as math;
 import 'package:get/get.dart';
 import 'package:marqueer/marqueer.dart';
@@ -13,6 +14,7 @@ class StartPage extends GetView<StartLogic> {
     Get.put(StartLogic());
     return Scaffold(
       appBar: AppBar(),
+      extendBodyBehindAppBar: true,
       body: Stack(
         fit: StackFit.expand,
         children: [
@@ -21,142 +23,121 @@ class StartPage extends GetView<StartLogic> {
             right: -10,
             top: 0,
             bottom: 0,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                Transform.rotate(
-                  angle: math.pi + math.pi * (350 / 360),
-                  child: SizedBox(
-                    height: 165,
-                    child: Marqueer(
-                      pps: 50,
-                      child: Row(
-                        children: [
-                          _buildImage("assets/images/i1.png"),
-                          _buildImage("assets/images/i2.png"),
-                          _buildImage("assets/images/i3.png"),
-                          _buildImage("assets/images/i4.png"),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-                Transform.rotate(
-                  angle: math.pi + math.pi * (350 / 360),
-                  child: SizedBox(
-                    height: 165,
-                    child: Marqueer(
-                      pps: 50,
-                      direction: MarqueerDirection.ltr,
-                      child: Row(
-                        children: [
-                          _buildImage("assets/images/y1.png"),
-                          _buildImage("assets/images/y2.png"),
-                          _buildImage("assets/images/y3.png"),
-                          _buildImage("assets/images/y4.png"),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-                Transform.rotate(
-                  angle: math.pi + math.pi * (350 / 360),
-                  child: SizedBox(
-                    height: 165,
-                    child: Marqueer(
-                      pps: 50,
-                      child: Row(
-                        children: [
-                          _buildImage("assets/images/x1.png"),
-                          _buildImage("assets/images/x2.png"),
-                          _buildImage("assets/images/x3.png"),
-                          _buildImage("assets/images/x4.png"),
-                          _buildImage("assets/images/x5.png"),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-                Transform.rotate(
-                  angle: math.pi + math.pi * (350 / 360),
-                  child: SizedBox(
-                    height: 165,
-                    child: ListView(
-                      scrollDirection: Axis.horizontal,
-                      children: [
-                        _buildImage("assets/images/z1.png"),
-                        _buildImage("assets/images/z2.png"),
-                        _buildImage("assets/images/z3.png"),
-                        _buildImage("assets/images/z4.png"),
-                        _buildImage("assets/images/z5.png"),
-                      ],
-                    ),
-                  ),
-                ),
-              ],
-            ),
+            child: _buildBackgroundList(),
           ),
+
+          // 顶部白色蒙版
           Positioned(
+            top: 0,
             left: 0,
             right: 0,
-            bottom: 0,
+            height: 80,
             child: DecoratedBox(
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 gradient: LinearGradient(
                   colors: [
-                    Color(0x00FFFFFF),
-                    Color.fromARGB(230, 255, 255, 255),
-                    Color.fromARGB(245, 255, 255, 255),
-                    Colors.white,
+                    context.theme.scaffoldBackgroundColor,
+                    const Color(0x00FFFFFF),
                   ],
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
-                  stops: [0, .1, .2, 1],
+                  stops: const [0, 1],
+                ),
+              ),
+            ),
+          ),
+
+          Positioned(
+            left: 0,
+            right: 0,
+            bottom: 20,
+            child: DecoratedBox(
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  colors: [
+                    context.theme.scaffoldBackgroundColor.withOpacity(0),
+                    context.theme.scaffoldBackgroundColor.withOpacity(.8),
+                    context.theme.scaffoldBackgroundColor.withOpacity(.95),
+                    context.theme.scaffoldBackgroundColor,
+                  ],
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  stops: const [0, .1, .2, .5],
                 ),
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  const SizedBox(
-                    height: 30,
-                  ),
-                  const Text(
+                  80.verticalSpace,
+                  Text(
                     "Discover NFT\r\nCollections",
                     textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 38,
-                      fontWeight: FontWeight.bold,
-                      color: Color(
-                        0xFF262A2F,
-                      ),
-                    ),
+                    style: context.theme.textTheme.bodyLarge,
                   ),
-                  const SizedBox(
-                    height: 26,
-                  ),
+                  26.verticalSpace,
                   const Text(
                     "Explore the top collection of NFTs and\r\n buy and sell your NFTs as well.",
                     textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 18,
-                      color: Color(
-                        0x58000000,
-                      ),
-                    ),
                   ),
-                  const SizedBox(
-                    height: 38,
-                  ),
+                  38.verticalSpace,
                   _buildOpenButton(),
-                  const SizedBox(
-                    height: 20,
-                  ),
                 ],
               ),
             ),
           ),
         ],
       ),
+    );
+  }
+
+  /// 背景 图片列表
+  Widget _buildBackgroundList() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        _buildMarqueer(
+          [
+            _buildImage("assets/images/i1.png"),
+            _buildImage("assets/images/i2.png"),
+            _buildImage("assets/images/i3.png"),
+            _buildImage("assets/images/i4.png"),
+          ],
+        ),
+        _buildMarqueer(
+          [
+            _buildImage("assets/images/y1.png"),
+            _buildImage("assets/images/y2.png"),
+            _buildImage("assets/images/y3.png"),
+            _buildImage("assets/images/y4.png"),
+          ],
+          direction: MarqueerDirection.ltr,
+        ),
+        _buildMarqueer(
+          [
+            _buildImage("assets/images/x1.png"),
+            _buildImage("assets/images/x2.png"),
+            _buildImage("assets/images/x3.png"),
+            _buildImage("assets/images/x4.png"),
+            _buildImage("assets/images/x5.png"),
+          ],
+        ),
+        SizedBox(
+          height: 165,
+          child: Transform.rotate(
+            angle: math.pi + math.pi * (350 / 360),
+            child: ListView(
+              scrollDirection: Axis.horizontal,
+              children: [
+                _buildImage("assets/images/z1.png"),
+                _buildImage("assets/images/z2.png"),
+                _buildImage("assets/images/z3.png"),
+                _buildImage("assets/images/z4.png"),
+                _buildImage("assets/images/z5.png"),
+              ],
+            ),
+          ),
+        ),
+      ],
     );
   }
 
@@ -174,34 +155,22 @@ class StartPage extends GetView<StartLogic> {
           height: 85,
           indicatorTransition: const ForegroundIndicatorTransition.fading(),
           iconBuilder: (value) {
-            return const Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Icon(
-                  Icons.arrow_forward_ios,
-                  size: 18,
-                  color: Color(0x4B000000),
-                ),
-                Icon(
-                  Icons.arrow_forward_ios,
-                  size: 18,
-                  color: Color(0x99000000),
-                ),
-                Icon(
-                  Icons.arrow_forward_ios,
-                  size: 18,
-                  color: Color.fromRGBO(0, 0, 0, 1),
-                ),
-              ],
+            if (!value) {
+              return const CircularProgressIndicator();
+            }
+            return Image.asset(
+              "assets/images/arrow.png",
+              width: 28,
+              height: 15,
             );
           },
           textBuilder: (value) {
             return const Text(
               "Start experience",
               style: TextStyle(
-                color: Colors.white,
                 fontSize: 22,
-                fontWeight: FontWeight.w600,
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
               ),
             );
           },
@@ -222,11 +191,36 @@ class StartPage extends GetView<StartLogic> {
     );
   }
 
+  /// 跑马灯组件
+  Widget _buildMarqueer(
+    List<Widget> children, {
+    MarqueerDirection direction = MarqueerDirection.rtl,
+  }) {
+    return SizedBox(
+      height: 165,
+      child: Transform.rotate(
+        angle: math.pi + math.pi * (350 / 360),
+        child: Marqueer(
+          pps: 50,
+          direction: direction,
+          restartAfterInteractionDuration: Durations.extralong4,
+          child: Row(
+            children: children,
+          ),
+        ),
+      ),
+    );
+  }
+
+  /// 单个图片
   Widget _buildImage(String image) {
     return Image.asset(
       image,
       width: 135,
       height: 155,
+      cacheWidth: 135 * 2,
+      cacheHeight: 155 * 2,
+      fit: BoxFit.fill,
     );
   }
 }
