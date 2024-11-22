@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nft/pages/start/start_page.dart';
@@ -11,8 +13,36 @@ class SplashPage extends StatelessWidget {
     toStartPage();
     return Scaffold(
       appBar: AppBar(),
-      body: const Center(
-        child: Text("NFT"),
+      extendBodyBehindAppBar: true,
+      body: Stack(
+        fit: StackFit.expand,
+        children: [
+          Image.asset(
+            "assets/images/splash_bg.png",
+            cacheWidth: 220,
+            cacheHeight: 120,
+            fit: BoxFit.cover,
+          ),
+          BackdropFilter(
+            filter: ImageFilter.blur(sigmaX: 30, sigmaY: 30),
+            child: const SizedBox(),
+          ),
+          const Positioned(
+            left: 0,
+            right: 0,
+            bottom: 60,
+            child: Text(
+              "NFT\r\nMarketplace",
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: 40,
+                letterSpacing: 5,
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
