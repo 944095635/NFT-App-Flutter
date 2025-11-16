@@ -19,7 +19,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: ^3.5.4
+  sdk: ^3.9.5
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -35,10 +35,10 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   # cupertino_icons: ^1.0.8
-  get: ^4.6.6
-  marqueer: ^1.4.5                #跑马灯
-  flutter_svg: ^2.0.15            #Svg图片
-  animated_toggle_switch: ^0.8.3  #滑块开关
+  get: ^4.7.2
+  marqueer: ^2.1.0                #跑马灯
+  flutter_svg: ^2.2.2            #Svg图片
+  animated_toggle_switch: ^0.8.5  #滑块开关
   flutter_staggered_grid_view: ^0.7.0 #瀑布流
   flutter_styled:                 #布局组件
     git: 
@@ -72,8 +72,8 @@ dev_dependencies:
   # activated in the `analysis_options.yaml` file located at the root of your
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
-  flutter_lints: ^4.0.0
-  flutter_launcher_icons: ^0.13.1    #图标
+  flutter_lints: ^6.0.0
+  flutter_launcher_icons: ^0.14.4    #图标
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

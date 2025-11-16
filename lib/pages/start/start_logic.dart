@@ -4,7 +4,7 @@ import 'package:nft/pages/home/home_page.dart';
 class StartLogic extends GetxController {
   var open = false.obs;
 
-  toHome() {
+  void toHome() {
     Get.offAll(() => const HomePage());
   }
 }
